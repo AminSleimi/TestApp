@@ -67,9 +67,9 @@ public class ListPlat extends ListActivity {
 			
 			//problem to fix bitmap
 			
-			Plat plat = (Plat) l.getItemAtPosition(position);
+			Plat plat = (Plat) l.getAdapter().getItem(position);
 			plat.setBitmap(null);
-			descriptionPlatIntent.putExtra("Plat", l.getItemIdAtPosition(position));
+			descriptionPlatIntent.putExtra("Plat", plat);//l.getItemIdAtPosition(position)
 			startActivity(descriptionPlatIntent);
 		
 		

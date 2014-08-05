@@ -1,11 +1,16 @@
 package com.asleimi.testapp;
 
+import java.io.InputStream;
 import java.io.Serializable;
+import java.net.URL;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.asleimi.testapp.model.Plat;
@@ -18,18 +23,34 @@ public class DescriptionPlat extends ActionBarActivity {
 		setContentView(R.layout.activity_description_plat);
 		
 		
-		final TextView platNomTextView = (TextView) findViewById(R.id.platNomTextView);
+		final TextView platNomTextView = (TextView) findViewById(R.id.platTextView);
 		final TextView ingredienTextView = (TextView) findViewById(R.id.ingredientTextView);
 		final TextView etapeTextView = (TextView) findViewById(R.id.etapeTextView);
+		//final ImageView imagePlat =(ImageView) findViewById(R.id.imageView1);
 		
 		Serializable extra = getIntent().getSerializableExtra("Plat");
 		
 		if (extra != null)
 		{
 			Plat plat = (Plat)extra;
+			/*try {
+				
+				String imageUrl = ListPlat.PHOTOS_BASE_URL + plat.getPhotoPlat();
+				InputStream in = (InputStream) new URL(imageUrl).getContent();
+				Bitmap bitmap = BitmapFactory.decodeStream(in);
+				//plat.setBitmap(bitmap);
+				imagePlat.setImageBitmap(bitmap);
+				in.close();
+			
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}*/
 			platNomTextView.setText(plat.getNomPlat());
 			ingredienTextView.setText(plat.getIngredientPlat());
 			etapeTextView.setText(plat.getEtapePlat());
+			
 		}
 	}
 
